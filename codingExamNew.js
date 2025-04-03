@@ -38,16 +38,18 @@ function prompting() {
         let monthly = loanTerm * 12 
 
         var interest = 0.575
-        let i = 0 
+        let i = 0  
+        var monthlyPayment = (((interest / 12) * last) / (1 - Math.pow(1 + (interest / 12), (loanTerm * -12)))).toFixed(2) 
         
-        while (i < montly || last > 0) {
-        var monthlyPayment = (((interest / 12) * last) / (1 - Math.pow(1 + (interest / 12), (loanTerm * -12)))).toFixed(2)
-        var last = last - monthlyPayment
-        let result = document.createElement("p")
-        result.textContent = `Your monthly payment is ${monthlyPayment} and you are on Month ${i}`
-        document.body.appendChild(result)
+        for (let i = 0; i <= monthly; i++) {
+            var last = last - monthlyPayment
+            var monthlyPayment = (((interest / 12) * last) / (1 - Math.pow(1 + (interest / 12), (loanTerm * -12)))).toFixed(2)
+            let result = document.createElement("p")
+            let o = `Your monthly payment is ${monthlyPayment}$ and you are on Month ${i}, your remaining balance is ${last}$`
+            result.textContent = o 
+            document.body.appendChild(result)
 
-        console.log(monthlyPayment)
+        console.log(o)
     }
     }
     catch {
