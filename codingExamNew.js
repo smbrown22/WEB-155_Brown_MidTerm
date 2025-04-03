@@ -48,6 +48,10 @@ function prompting() {
             let o = `Your monthly payment is ${monthlyPayment}$ and you are on Month ${i}, your remaining balance is ${last}$`
             result.textContent = o 
             document.body.appendChild(result)
+            if (last < 0) {
+                result.textContent = "You've paid off your loan"
+                document.body.appendChild(result)
+            }
 
         console.log(o)
     }
